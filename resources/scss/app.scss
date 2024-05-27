@@ -1,0 +1,220 @@
+@use "./partials/variables" as *;
+
+$fa-font-path: "../webfonts" !default;
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+
+@import "~bootstrap/scss/bootstrap";
+
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Antonio:wght@100..700&display=swap");
+
+body {
+    background-color: $general-white;
+    color: $header-text;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header {
+    font-family: $anton;
+    font-size: 0.9rem;
+    & > div {
+        height: 120px;
+        div#logo {
+            width: 80px;
+            aspect-ratio: 1 / 1;
+        }
+        ul {
+            height: 100%;
+            li {
+                &:last-child {
+                    a {
+                        margin-right: 0;
+                    }
+                }
+                a {
+                    height: 100%;
+                    margin-right: 40px;
+                    position: relative;
+                    &:hover {
+                        color: $general-blue;
+                        transition-duration: 0.3s;
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            left: 0;
+                            bottom: 0;
+                            width: 100%;
+                            height: 5px;
+                            background-color: $general-blue;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+main#home {
+    background-color: $main-bg;
+    color: $general-white;
+    div#jumbotron {
+        width: 100%;
+        height: 400px;
+        background-image: url("/images/jumbotron.jpg");
+    }
+    div.container {
+        h2 {
+            display: inline-block;
+            font-family: $anton;
+            background-color: $general-blue;
+            padding: 10px 35px;
+            transform: translateY(-50%);
+        }
+        div.comics {
+            margin-top: -10px;
+            padding-bottom: 30px;
+            a {
+                .cover {
+                    width: 100%;
+                    aspect-ratio: 1 / 1;
+                    overflow: hidden;
+                    img {
+                        width: 100%;
+                    }
+                }
+                h6 {
+                    margin-top: 15px;
+                    font-size: 0.9rem;
+                    font-weight: 400;
+                }
+            }
+        }
+        button {
+            font-family: $anton;
+            font-size: 0.9rem;
+            background-color: $general-blue;
+            color: $general-white;
+            padding: 20px 70px;
+            margin-bottom: 20px;
+            border: 0;
+            line-height: 0;
+            &:hover {
+                filter: brightness(108%);
+                transition-duration: 0.3s;
+            }
+        }
+    }
+}
+
+footer {
+    #top-footer {
+        background-color: $general-blue;
+        color: $general-white;
+        div.container {
+            padding-top: 30px;
+            padding-bottom: 30px;
+            a {
+                padding: 20px 34px;
+                border: 2px solid rgba(255, 255, 255, 0);
+                &:hover {
+                    border-color: $general-white;
+                    transition-duration: 0.4s;
+                }
+                div.icon {
+                    height: 60px;
+                    aspect-ratio: 1 / 1;
+                }
+                span {
+                    font-size: 0.9rem;
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+    #middle-footer {
+        background-image: url("/images/footer-bg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        div.container {
+            padding-top: 50px;
+            padding-bottom: 50px;
+            background-image: url("/images/dc-logo-bg.png");
+            background-repeat: no-repeat;
+            background-position: right 1.5% bottom 50%;
+            div.col-1 {
+                width: 150px;
+                &:first-child {
+                    ul {
+                        &:first-child {
+                            padding-bottom: 20px;
+                        }
+                    }
+                }
+                ul {
+                    padding: 0;
+                    h5 {
+                        font-family: $anton;
+                        color: $general-white;
+                    }
+                    li {
+                        height: 21px;
+                        a {
+                            color: $footer-text;
+                            font-size: 0.8rem;
+                            &:hover {
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #bottom-footer {
+        background-color: $footer-bg;
+        div.container {
+            height: 120px;
+            #call-to-action {
+                color: $general-white;
+                padding: 10px 15px;
+                font-size: 1rem;
+                font-weight: 600;
+                border: 2px solid $general-blue;
+                &:hover {
+                    background-color: $general-blue;
+                    transition-duration: 0.3s;
+                }
+            }
+            div.social-icons {
+                span {
+                    font-family: $anton;
+                    font-size: 1.4rem;
+                    margin-right: 10px;
+                    color: $general-blue;
+                }
+                div.icon {
+                    margin-left: 20px;
+                    a {
+                        &:hover {
+                            img {
+                                filter: brightness(200%);
+                                transition-duration: 0.6s;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
