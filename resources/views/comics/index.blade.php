@@ -21,7 +21,9 @@
             </div>
         </div>
         <div class="text-center">
-            <button class="text-uppercase">Load More</button>
+            <a href="{{ route('comics.create') }}">
+                <button class="text-uppercase">Add comic</button>
+            </a>
         </div>
     </div>
 </main>
