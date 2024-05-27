@@ -26,7 +26,3 @@ Route::resource('comics', ComicController::class);
 Route::get('/characters', function () {
     return view('characters');
 });
-
-Route::get('/comics', function () {
-    return view('comics');
-});
