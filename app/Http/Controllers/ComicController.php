@@ -45,8 +45,10 @@ class ComicController extends Controller
         $new_comic->series = $form_data["series"];
         $new_comic->type = $form_data["type"]; */
 
-        $new_comic->fill($form_data);
+        /* $new_comic->fill($form_data); */
         
+        $new_comic = Comic::create($form_data);
+
         $new_comic->save();
 
         return redirect()->route('comics.index');
