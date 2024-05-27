@@ -42,12 +42,11 @@ class ComicController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param object Comic $id
      */
-    public function show($id)
+    public function show(Comic $comic)
     {
-        //
+        return view("comics.show", compact("comic"));
     }
 
     /**

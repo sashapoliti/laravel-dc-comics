@@ -10,7 +10,7 @@
             <div class="row gx-4 gy-5">
                 @foreach ($comics as $comic)
                     <div class="col-12 col-md-6 col-lg-4 col-xxl-2">
-                        <a href="#">
+                        <a href="{{ route('comics.show', $comic->id) }}">
                             <div class="cover">
                                 <img src="{{ $comic['thumb'] }}" alt="Copertina di {{ $comic['series'] }}" />
                             </div>
