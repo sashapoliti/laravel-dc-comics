@@ -8,7 +8,7 @@
         <h2 class="text-uppercase">{{ $comic['series'] }}</h2>
         <div class="comics container d-flex">
             <div class="me-4">
-                <img src="{{ $comic['thumb'] }}" alt="Copertina di {{ $comic['series'] }}" />
+                <img class="w-100" src="{{ $comic['thumb'] }}" alt="Copertina di {{ $comic['series'] }}" />
             </div>
             <div>
                 <p>{{ $comic['type'] }}</p>
