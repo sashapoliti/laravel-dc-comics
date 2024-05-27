@@ -1,3 +1,6 @@
+<?php
+    $headerMenu = config('db.menu');
+?>
 <header>
     <div class="container d-flex justify-content-between align-items-center">
         <a href="/">

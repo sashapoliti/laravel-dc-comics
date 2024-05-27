@@ -1,3 +1,11 @@
+<?php
+    $footerDcComics = config('db.dcComics');
+    $footerShop = config('db.shop');
+    $footerDc = config('db.dc');
+    $footerSites = config('db.sites');
+    $footerSocialIcons = config('db.socialIcons');
+    $footerCards = config('db.shopCards');
+?>
 <footer>
   <div id="top-footer">
     <div class="container d-flex flex-wrap justify-content-center align-items-center">
