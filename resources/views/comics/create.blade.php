@@ -11,11 +11,11 @@
                 @csrf
                 <div class="mb-3">
                     <label for="series" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="series" name="series">
+                    <input type="text" class="form-control" id="series" name="series" required>
                 </div>
                 <div class="mb-3">
                     <label for="thumb" class="form-label">Image</label>
-                    <input type="text" class="form-control" id="thumb" name="thumb">
+                    <input type="text" class="form-control" id="thumb" name="thumb" required>
                 </div>
                 <div class="mb-3">
                     <label for="type" class="form-label">Type</label>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="price" class="form-label">Price</label>
-                    <input type="text" class="form-control" id="price" name="price">
+                    <input type="text" class="form-control" id="price" name="price" required>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="text-uppercase">Add</button>
