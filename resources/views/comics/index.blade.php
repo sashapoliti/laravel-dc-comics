@@ -118,7 +118,11 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary text-uppercase"
                                             data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-danger text-uppercase">Delete</button>
+                                        <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
