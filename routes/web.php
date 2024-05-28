@@ -21,7 +21,7 @@ Route::get('/', function () {
     return view('home', compact('mainComics'));
 });
 
-Route::resource('comics', ComicController::class);
+Route::resource('comics', ComicController::class)->except(['create', 'show', 'edit']);
 
 Route::get('/characters', function () {
     return view('characters');
