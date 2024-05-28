@@ -38,7 +38,7 @@ class ComicController extends Controller
     {
         $form_data = $request->all();
         
-        $new_comic = new Comic();
+        /* $new_comic = new Comic(); */
 
         /* $new_comic->thumb = $form_data["thumb"];
         $new_comic->price = $form_data["price"];
@@ -49,7 +49,7 @@ class ComicController extends Controller
         
         $new_comic = Comic::create($form_data);
 
-        $new_comic->save();
+        /* $new_comic->save(); */
 
         return redirect()->route('comics.index');
     }
