@@ -40,8 +40,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <p>{{ $comic['type'] }}</p>
-                                        <p>{{ $comic['price'] }}</p>
+                                        <p class="px-5">{{ $comic['type'] }}</p>
+                                        <p class="px-5">{{ $comic['price'] }}</p>
                                         <div class="text-center">
                                             <button class="text-uppercase" data-bs-toggle="offcanvas"
                                                 data-bs-target="#offcanvasEdit{{ $comic->id }}"
@@ -96,7 +96,27 @@
                                             </div>
 
                                             <button class="text-uppercase" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">Delete</button>
+                                                data-bs-target="#deleteModal{{ $comic->id }}">Delete</button>
+
+                                            {{-- MODAL DELETE --}}
+                                            <div class="modal fade" id="deleteModal{{ $comic->id }}" tabindex="-1" aria-labelledby="deleteModal{{ $comic->id }}Label" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <h1 class="modal-title fs-5" id="deleteModal{{ $comic->id }}Label">Modal title</h1>
+                                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                      ...
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                      <button type="button" class="btn btn-primary">Save changes</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
