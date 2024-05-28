@@ -116,12 +116,14 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary text-uppercase"
+                                        <div>
+                                            <button type="button" class="btn btn-secondary text-uppercase"
                                             data-bs-dismiss="modal">Close</button>
+                                        </div>
                                         <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="text-uppercase">Delete</button>
                                         </form>
                                     </div>
                                 </div>
