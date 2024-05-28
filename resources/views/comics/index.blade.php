@@ -10,12 +10,48 @@
                 <div class="row gx-4 gy-5">
                     @foreach ($comics as $comic)
                         <div class="col-12 col-md-6 col-lg-4 col-xxl-2">
-                            <a role="button">
+                            <a role="button" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $comic->id }}">
                                 <div class="cover">
                                     <img src="{{ $comic['thumb'] }}" alt="Copertina di {{ $comic['series'] }}" />
                                 </div>
                                 <h6 class="text-uppercase">{{ $comic['series'] }}</h6>
                             </a>
+                        </div>
+
+                        {{-- MODAL SHOW --}}
+                        <div class="modal-show modal fade" id="exampleModal{{ $comic->id }}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel{{ $comic->id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                        <div class="img-container">
+                                            <img src="{{ $comic['thumb'] }}" alt="Copertina di {{ $comic['series'] }}">
+                                            <div class="info">
+                                                <h2>{{ $comic['series'] }}</h2>
+                                                <div class="command d-flex align-items-center">
+                                                    <button class="plus d-flex align-items-center justify-content-center">
+                                                        <i class="fa-solid fa-plus"></i>
+                                                    </button>
+                                                    <button class="pref d-flex align-items-center justify-content-center">
+                                                        <i class="fa-regular fa-thumbs-up"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>{{ $comic['type'] }}</p>
+                                        <p>{{ $comic['price'] }}</p>
+                                        <div class="text-center">
+                                            <a>
+                                                <button class="text-uppercase">Edit</button>
+                                            </a>
+                                            <button class="text-uppercase" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     @endforeach
                 </div>
@@ -30,37 +66,35 @@
     {{-- OFFCANVAS CREATE --}}
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Add new Comic</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <div>
-                <form action="{{ route('comics.store') }}" method="POST">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="series" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="series" name="series" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="thumb" class="form-label">Image</label>
-                        <input type="text" class="form-control" id="thumb" name="thumb" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="type" class="form-label">Type</label>
-                        <select class="form-select" name="type" id="type">
-                            <option value="comic book">comic book</option>
-                            <option value="graphic novel">graphic novel</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="price" class="form-label">Price</label>
-                        <input type="text" class="form-control" id="price" name="price" required>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="text-uppercase">Add</button>
-                    </div>
-                </form>
-            </div>
+            <form action="{{ route('comics.store') }}" method="POST">
+                @csrf
+                <div class="mb-3">
+                    <label for="series" class="form-label">Title</label>
+                    <input type="text" class="form-control" id="series" name="series" required>
+                </div>
+                <div class="mb-3">
+                    <label for="thumb" class="form-label">Image</label>
+                    <input type="text" class="form-control" id="thumb" name="thumb" required>
+                </div>
+                <div class="mb-3">
+                    <label for="type" class="form-label">Type</label>
+                    <select class="form-select" name="type" id="type">
+                        <option value="comic book">comic book</option>
+                        <option value="graphic novel">graphic novel</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="text" class="form-control" id="price" name="price" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="text-uppercase">Add</button>
+                </div>
+            </form>
         </div>
     </div>
 

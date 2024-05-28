@@ -117,6 +117,85 @@ main#home {
     }
 }
 
+.modal-show {
+    .modal-dialog {
+        max-width: 50%;
+        .modal-content {
+            overflow: hidden;
+            background-color: $general-white;
+            color: $header-text;
+            padding: 0;
+            .modal-body {
+                position: relative;
+                padding: 0;
+                button.btn-close {
+                    color: $header-text;
+                    padding: 10px !important;
+                    position: absolute;
+                    right: 20px;
+                    top: 20px;
+                    font-size: 2rem !important;
+                    z-index: 10;
+                }
+                .img-container {
+                    height: 550px;
+                    overflow: hidden;
+                    position: relative;
+                    img {
+                        width: 100%;
+                        object-fit: contain;
+                        object-position: 50%;
+                    }
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 30%; /* Altezza della parte inferiore da rendere trasparente */
+                        background: linear-gradient(
+                            to bottom,
+                            rgba(255, 255, 255, 0) 0%,
+                            rgb(255, 255, 255) 70%
+                        );
+                    }
+                    .info {
+                        position: absolute;
+                        bottom: 20px;
+                        left: 40px;
+                        z-index: 1;
+                        h2 {
+                            color: $general-white;
+                            font-size: 3rem;
+                            font-weight: 800;
+                            transform: translate(0) !important;
+                        }
+                        .command {
+                            button {
+                                margin-right: 7px;
+                                margin-bottom: 0 !important;
+                                &.plus,
+                                &.pref {
+                                    width: 30px;
+                                    aspect-ratio: 1 / 1;
+                                    padding: 5px !important;
+                                    color: $general-white;
+                                    background-color: rgba(0, 0, 0, 0.349);
+                                    border-radius: 50px;
+                                }
+                                &:hover {
+                                    transform: scale(1.1);
+                                    transition-duration: 0.2s;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 footer {
     #top-footer {
         background-color: $general-blue;
