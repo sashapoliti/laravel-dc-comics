@@ -196,6 +196,22 @@ main#home {
     }
 }
 
+.modal-delete {
+    h1 {
+        color: $header-text;
+        font-size: 1.5rem;
+        font-weight: 800;
+    }
+    button {
+        margin-bottom: 0 !important;
+        border-radius: 0;
+        &.btn-close {
+            padding: calc(var(--bs-modal-header-padding-y) * 0.5)
+                calc(var(--bs-modal-header-padding-x) * 0.5) !important;
+        }
+    }
+}
+
 footer {
     #top-footer {
         background-color: $general-blue;
