@@ -94,7 +94,7 @@ class ComicController extends Controller
 
         $comic->update($form_data);
 
-        return redirect()->route('comics.show', $comic->id);
+        return redirect()->route('comics.index');
     }
 
     /**
