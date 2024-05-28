@@ -81,18 +81,18 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        $comic = Comic::find($id);
+        /* $comic = Comic::find($id); */
 
         $form_data = $request->all();
 
-        $comic->thumb = $form_data["thumb"];
+        /* $comic->thumb = $form_data["thumb"];
         $comic->price = $form_data["price"];
         $comic->series = $form_data["series"];
-        $comic->type = $form_data["type"];
+        $comic->type = $form_data["type"]; */
 
-        $comic->update();
+        $comic->update($form_data);
 
         return redirect()->route('comics.show', $comic->id);
     }
@@ -103,8 +103,10 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+        
+        return redirect()->route('comics.index');
     }
 }
