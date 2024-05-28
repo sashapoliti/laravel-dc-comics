@@ -69,9 +69,9 @@ class ComicController extends Controller
      *
      * @param  int  $id
      */
-    public function edit($id)
+    public function edit(Comic $comic)
     {
-        return view("comics.edit");
+        return view("comics.edit", compact("comic"));
     }
 
     /**
