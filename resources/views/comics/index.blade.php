@@ -43,14 +43,19 @@
                                         <p>{{ $comic['type'] }}</p>
                                         <p>{{ $comic['price'] }}</p>
                                         <div class="text-center">
-                                            <button class="text-uppercase"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasEdit{{ $comic->id }}"
-                                            aria-controls="offcanvasEdit{{ $comic->id }}">Edit</button>
+                                            <button class="text-uppercase" data-bs-toggle="offcanvas"
+                                                data-bs-target="#offcanvasEdit{{ $comic->id }}"
+                                                aria-controls="offcanvasEdit{{ $comic->id }}">Edit</button>
 
                                             {{-- OFFCANVAS EDIT --}}
-                                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasEdit{{ $comic->id }}" aria-labelledby="offcanvasEdit{{ $comic->id }}Label">
+                                            <div class="offcanvas offcanvas-end" tabindex="-1"
+                                                id="offcanvasEdit{{ $comic->id }}"
+                                                aria-labelledby="offcanvasEdit{{ $comic->id }}Label">
                                                 <div class="offcanvas-header">
-                                                  <h5 class="offcanvas-title" id="offcanvasEdit{{ $comic->id }}Label">Edit {{ $comic['series'] }}</h5>
-                                                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                                    <h5 class="offcanvas-title" id="offcanvasEdit{{ $comic->id }}Label">
+                                                        Edit {{ $comic['series'] }}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                                        aria-label="Close"></button>
                                                 </div>
                                                 <div class="offcanvas-body">
                                                     <form action="{{ route('comics.update', $comic->id) }}" method="POST">
@@ -58,29 +63,37 @@
                                                         @method('PUT')
                                                         <div class="mb-3">
                                                             <label for="series" class="form-label">Title</label>
-                                                            <input type="text" class="form-control" id="series" name="series" value="{{ $comic->series }}" required>
+                                                            <input type="text" class="form-control" id="series"
+                                                                name="series" value="{{ $comic->series }}" required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="thumb" class="form-label">Image</label>
-                                                            <input type="text" class="form-control" id="thumb" name="thumb" value="{{ $comic->thumb }}" required>
+                                                            <input type="text" class="form-control" id="thumb"
+                                                                name="thumb" value="{{ $comic->thumb }}" required>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="type" class="form-label">Type</label>
-                                                            <select class="form-select" name="type" id="type" value="{{ $comic->type }}">
-                                                                <option value="comic book" {{ $comic->type === 'comic book' ? 'selected' : '' }}>comic book</option>
-                                                                <option value="graphic novel" {{ $comic->type === 'graphic novel' ? 'selected' : '' }}>graphic novel</option>
+                                                            <select class="form-select" name="type" id="type"
+                                                                value="{{ $comic->type }}">
+                                                                <option value="comic book"
+                                                                    {{ $comic->type === 'comic book' ? 'selected' : '' }}>
+                                                                    comic book</option>
+                                                                <option value="graphic novel"
+                                                                    {{ $comic->type === 'graphic novel' ? 'selected' : '' }}>
+                                                                    graphic novel</option>
                                                             </select>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="price" class="form-label">Price</label>
-                                                            <input type="text" class="form-control" id="price" name="price" value="{{ $comic->price }}" required>
+                                                            <input type="text" class="form-control" id="price"
+                                                                name="price" value="{{ $comic->price }}" required>
                                                         </div>
                                                         <div class="text-center">
                                                             <button type="submit" class="text-uppercase">Edit</button>
                                                         </div>
                                                     </form>
                                                 </div>
-                                              </div>
+                                            </div>
 
                                             <button class="text-uppercase" data-bs-toggle="modal"
                                                 data-bs-target="#exampleModal">Delete</button>
@@ -96,42 +109,47 @@
                 <button class="text-uppercase" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
                     aria-controls="offcanvasExample">Add comic</button>
             </div>
+
+            {{-- OFFCANVAS CREATE --}}
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+                aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Add new Comic</h5>
+                    <a type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></a>
+                </div>
+                <div class="offcanvas-body">
+                    <form action="{{ route('comics.store') }}" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="series" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="series" name="series" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="thumb" class="form-label">Image</label>
+                            <input type="text" class="form-control" id="thumb" name="thumb" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="type" class="form-label">Type</label>
+                            <select class="form-select" name="type" id="type">
+                                <option value="comic book">comic book</option>
+                                <option value="graphic novel">graphic novel</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="text" class="form-control" id="price" name="price" required>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="text-uppercase">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
+
+
     </main>
 
-    {{-- OFFCANVAS CREATE --}}
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Add new Comic</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <form action="{{ route('comics.store') }}" method="POST">
-                @csrf
-                <div class="mb-3">
-                    <label for="series" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="series" name="series" required>
-                </div>
-                <div class="mb-3">
-                    <label for="thumb" class="form-label">Image</label>
-                    <input type="text" class="form-control" id="thumb" name="thumb" required>
-                </div>
-                <div class="mb-3">
-                    <label for="type" class="form-label">Type</label>
-                    <select class="form-select" name="type" id="type">
-                        <option value="comic book">comic book</option>
-                        <option value="graphic novel">graphic novel</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label for="price" class="form-label">Price</label>
-                    <input type="text" class="form-control" id="price" name="price" required>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="text-uppercase">Add</button>
-                </div>
-            </form>
-        </div>
-    </div>
+
 
 @endsection
