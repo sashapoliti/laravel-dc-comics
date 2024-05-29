@@ -7,6 +7,15 @@
         <div class="container">
             <h2 class="text-uppercase">My Comics</h2>
             <div class="comics container">
+                {{-- @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif --}}
                 <div class="row gx-4 gy-5">
                     @foreach ($comics as $comic)
                         <div class="col-12 col-md-6 col-lg-4 col-xxl-2">
@@ -118,7 +127,7 @@
                                     <div class="modal-footer">
                                         <div>
                                             <button type="button" class="btn btn-secondary text-uppercase"
-                                            data-bs-dismiss="modal">Close</button>
+                                                data-bs-dismiss="modal">Close</button>
                                         </div>
                                         <form action="{{ route('comics.destroy', $comic->id) }}" method="POST">
                                             @csrf
@@ -139,7 +148,7 @@
             </div>
 
             {{-- OFFCANVAS CREATE --}}
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+            <div class="offcanvas offcanvas-start @if ($errors->any()) show @endif" tabindex="-1" id="offcanvasExample"
                 aria-labelledby="offcanvasExampleLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasExampleLabel">Add new Comic</h5>
@@ -150,22 +159,40 @@
                         @csrf
                         <div class="mb-3">
                             <label for="series" class="form-label">Title</label>
-                            <input type="text" class="form-control" id="series" name="series" required>
+                            <input type="text" class="form-control @error('series') is-invalid @enderror"
+                                id="series" name="series" value="{{ old('series') }}" required>
+                            @error('series')
+                                <div class="alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="thumb" class="form-label">Image</label>
-                            <input type="text" class="form-control" id="thumb" name="thumb" required>
+                            <input type="text" class="form-control @error('thumb') is-invalid @enderror"
+                                id="thumb" name="thumb" value="{{ old('thumb') }}" required>
+                            @error('thumb')
+                                <div class="alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="type" class="form-label">Type</label>
-                            <select class="form-select" name="type" id="type">
+                            <select class="form-select" name="type" id="type" value="{{ old('type') }}">
                                 <option value="comic book">comic book</option>
                                 <option value="graphic novel">graphic novel</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="price" class="form-label">Price</label>
-                            <input type="text" class="form-control" id="price" name="price" required>
+                            <input type="text" class="form-control @error('price') is-invalid @enderror"
+                                id="price" name="price" value="{{ old('price') }}" required>
+                            @error('price')
+                                <div class="alert alert-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="text-center">
                             <button type="submit" class="text-uppercase">Add</button>
