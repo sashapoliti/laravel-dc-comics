@@ -7,13 +7,13 @@
         <div class="container">
             <h2 class="text-uppercase">My Comics</h2>
             <div class="comics container">
-                {{-- @if ($errors->store->any())
-                    @foreach ($errors->store->all() as $error)
+                @if ($errors->update->any())
+                    @foreach ($errors->update->all() as $error)
                         <div class="alert alert-danger">
                             {{ $error }}
                         </div>
                     @endforeach
-                @endif --}}
+                @endif
                 <div class="row gx-4 gy-5">
                     @foreach ($comics as $comic)
                         <div class="col-12 col-md-6 col-lg-4 col-xxl-2">
@@ -26,7 +26,7 @@
                         </div>
 
                         {{-- MODAL SHOW --}}
-                        <div class="modal-show modal fade" id="exampleModal{{ $comic->id }}" tabindex="-1"
+                        <div class="modal-show modal fade {{-- @if ($errors->update->any()) show @endif --}}" id="exampleModal{{ $comic->id }}" tabindex="-1"
                             aria-labelledby="exampleModalLabel{{ $comic->id }}" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
@@ -55,7 +55,7 @@
                                                 aria-controls="offcanvasEdit{{ $comic->id }}">Edit</button>
 
                                             {{-- OFFCANVAS EDIT --}}
-                                            <div class="offcanvas offcanvas-end" tabindex="-1"
+                                            <div class="offcanvas offcanvas-end {{-- @if ($errors->update->any()) show @endif --}}" tabindex="-1"
                                                 id="offcanvasEdit{{ $comic->id }}"
                                                 aria-labelledby="offcanvasEdit{{ $comic->id }}Label">
                                                 <div class="offcanvas-header">

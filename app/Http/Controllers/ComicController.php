@@ -65,7 +65,7 @@ class ComicController extends Controller
             'type.min' => 'Il campo :attribute deve avere almeno :min caratteri',
             'type.max' => 'Il campo :attribute deve avere al massimo :max caratteri'
         ])->validateWithBag('store');
-        $form_data = $request->validated();
+        $form_data = $validator;
         
         /* $new_comic = new Comic(); */
 
@@ -110,11 +110,32 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateComicRequest $request, Comic $comic)
+    public function update(Request $request, Comic $comic)
     {
         /* $comic = Comic::find($id); */
 
-        $form_data = $request->validated();
+        $validator = Validator::make($request->all(), [
+            'series' => 'required|max:255|min:3',
+            'thumb'=> 'required|max:255|min:3',
+            'price'=> 'required|max:20|min:3',
+            'type'=> 'required|max:50|min:3'
+        ],
+        [
+            'series.required' => 'Il campo :attribute è obbligatorio',
+            'series.min' => 'Il campo :attribute deve avere almeno :min caratteri',
+            'series.max' => 'Il campo :attribute deve avere al massimo :max caratteri',
+            'thumb.required' => 'Il campo :attribute è obbligatorio',
+            'thumb.min' => 'Il campo :attribute deve avere almeno :min caratteri',
+            'thumb.max' => 'Il campo :attribute deve avere al massimo :max caratteri',
+            'price.required' => 'Il campo :attribute è obbligatorio',
+            'price.min' => 'Il campo :attribute deve avere almeno :min caratteri',
+            'price.max' => 'Il campo :attribute deve avere al massimo :max caratteri',
+            'type.required' => 'Il campo :attribute è obbligatorio',
+            'type.min' => 'Il campo :attribute deve avere almeno :min caratteri',
+            'type.max' => 'Il campo :attribute deve avere al massimo :max caratteri'
+        ])->validateWithBag('update');
+
+        $form_data = $validator;
 
         /* $comic->thumb = $form_data["thumb"];
         $comic->price = $form_data["price"];
