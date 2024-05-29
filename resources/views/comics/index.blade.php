@@ -175,7 +175,7 @@
                             <input type="text" class="form-control @error('series', 'store') is-invalid @enderror"
                                 id="series" name="series" value="{{ old('series') }}" {{-- required maxlength="100"
                                 minlength="3" --}}>
-                            @error('series')
+                            @error('series', 'store')
                                 <div class="alert alert-danger">
                                     {{ $message }}
                                 </div>
@@ -186,7 +186,7 @@
                             <input type="text" class="form-control @error('thumb', 'store') is-invalid @enderror"
                                 id="thumb" name="thumb" value="{{ old('thumb') }}" {{-- required maxlength="255"
                                 minlength="3" --}}>
-                            @error('thumb')
+                            @error('thumb', 'store')
                                 <div class="alert alert-danger">
                                     {{ $message }}
                                 </div>
@@ -204,7 +204,7 @@
                             <input type="text" class="form-control @error('price', 'store') is-invalid @enderror"
                                 id="price" name="price" value="{{ old('price') }}" {{-- required maxlength="20"
                                 minlength="3" --}}>
-                            @error('price')
+                            @error('price', 'store')
                                 <div class="alert alert-danger">
                                     {{ $message }}
                                 </div>
