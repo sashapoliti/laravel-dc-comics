@@ -160,7 +160,7 @@
                         <div class="mb-3">
                             <label for="series" class="form-label">Title</label>
                             <input type="text" class="form-control @error('series') is-invalid @enderror"
-                                id="series" name="series" value="{{ old('series') }}" required>
+                                id="series" name="series" value="{{ old('series') }}" required maxlength="100" minlength="3">
                             @error('series')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -170,7 +170,7 @@
                         <div class="mb-3">
                             <label for="thumb" class="form-label">Image</label>
                             <input type="text" class="form-control @error('thumb') is-invalid @enderror"
-                                id="thumb" name="thumb" value="{{ old('thumb') }}" required>
+                                id="thumb" name="thumb" value="{{ old('thumb') }}" required maxlength="255" minlength="3">
                             @error('thumb')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -187,7 +187,7 @@
                         <div class="mb-3">
                             <label for="price" class="form-label">Price</label>
                             <input type="text" class="form-control @error('price') is-invalid @enderror"
-                                id="price" name="price" value="{{ old('price') }}" required>
+                                id="price" name="price" value="{{ old('price') }}" required maxlength="20" minlength="3">
                             @error('price')
                                 <div class="alert alert-danger">
                                     {{ $message }}
