@@ -7,14 +7,12 @@
         <div class="container">
             <h2 class="text-uppercase">My Comics</h2>
             <div class="comics container">
-                {{-- @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                {{-- @if ($errors->store->any())
+                    @foreach ($errors->store->all() as $error)
+                        <div class="alert alert-danger">
+                            {{ $error }}
+                        </div>
+                    @endforeach
                 @endif --}}
                 <div class="row gx-4 gy-5">
                     @foreach ($comics as $comic)
@@ -163,7 +161,7 @@
             </div>
 
             {{-- OFFCANVAS CREATE --}}
-            <div class="offcanvas offcanvas-start @if ($errors->any()) show @endif" tabindex="-1"
+            <div class="offcanvas offcanvas-start @if ($errors->store->any()) show @endif" tabindex="-1"
                 id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasExampleLabel">Add new Comic</h5>
@@ -174,9 +172,9 @@
                         @csrf
                         <div class="mb-3">
                             <label for="series" class="form-label">Title</label>
-                            <input type="text" class="form-control @error('series') is-invalid @enderror"
-                                id="series" name="series" value="{{ old('series') }}" required maxlength="100"
-                                minlength="3">
+                            <input type="text" class="form-control @error('series', 'store') is-invalid @enderror"
+                                id="series" name="series" value="{{ old('series') }}" {{-- required maxlength="100"
+                                minlength="3" --}}>
                             @error('series')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -185,9 +183,9 @@
                         </div>
                         <div class="mb-3">
                             <label for="thumb" class="form-label">Image</label>
-                            <input type="text" class="form-control @error('thumb') is-invalid @enderror"
-                                id="thumb" name="thumb" value="{{ old('thumb') }}" required maxlength="255"
-                                minlength="3">
+                            <input type="text" class="form-control @error('thumb', 'store') is-invalid @enderror"
+                                id="thumb" name="thumb" value="{{ old('thumb') }}" {{-- required maxlength="255"
+                                minlength="3" --}}>
                             @error('thumb')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -203,9 +201,9 @@
                         </div>
                         <div class="mb-3">
                             <label for="price" class="form-label">Price</label>
-                            <input type="text" class="form-control @error('price') is-invalid @enderror"
-                                id="price" name="price" value="{{ old('price') }}" required maxlength="20"
-                                minlength="3">
+                            <input type="text" class="form-control @error('price', 'store') is-invalid @enderror"
+                                id="price" name="price" value="{{ old('price') }}" {{-- required maxlength="20"
+                                minlength="3" --}}>
                             @error('price')
                                 <div class="alert alert-danger">
                                     {{ $message }}

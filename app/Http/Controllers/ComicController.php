@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comic;
-/* use Illuminate\Support\Facades\Validator; */
-use App\Http\Requests\StoreComicRequest;
+use Illuminate\Support\Facades\Validator;
+/* use App\Http\Requests\StoreComicRequest; */
 use App\Http\Requests\UpdateComicRequest;
 
 class ComicController extends Controller
@@ -37,7 +37,7 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreComicRequest $request)
+    public function store(Request $request)
     {
         /* $request->validate([
             'series' => 'required|max:255|min:3',
@@ -45,6 +45,12 @@ class ComicController extends Controller
             'price'=> 'required|max:20|min:3',
             'type'=> 'required|max:50|min:3',
         ]); */
+        $validator = Validator::make($request->all(), [
+            'series' => 'required|max:255|min:3',
+            'thumb'=> 'required|max:255|min:3',
+            'price'=> 'required|max:20|min:3',
+            'type'=> 'required|max:50|min:3'
+        ])->validateWithBag('store');
         $form_data = $request->validated();
         
         /* $new_comic = new Comic(); */
