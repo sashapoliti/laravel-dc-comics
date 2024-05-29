@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comic;
+/* use Illuminate\Support\Facades\Validator; */
+use App\Http\Requests\StoreComicRequest;
 
 class ComicController extends Controller
 {
@@ -34,15 +36,15 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
-        $request->validate([
+        /* $request->validate([
             'series' => 'required|max:255|min:3',
             'thumb'=> 'required|max:255|min:3',
             'price'=> 'required|max:20|min:3',
             'type'=> 'required|max:50|min:3',
-        ]);
-        $form_data = $request->all();
+        ]); */
+        $form_data = $request->validated();
         
         /* $new_comic = new Comic(); */
 
@@ -115,4 +117,23 @@ class ComicController extends Controller
         
         return redirect()->route('comics.index');
     }
+
+    /* public function validation($data)
+    {
+        $validator = Validator::make($data, [
+            'series' => 'required|max:255|min:3',
+            'thumb'=> 'required|max:255|min:3',
+            'price'=> 'required|max:20|min:3',
+            'type'=> 'required|max:50|min:3',
+        ],
+        [   
+           'series.required' => 'Hai inserito un campo vuoto!',
+           'thumb.required' => 'Hai inserito un campo vuoto!',
+           'type.required' => 'Hai inserito un campo vuoto!',
+           'price.required' => 'Hai inserito un campo vuoto!',
+           'thumb'=> 'Il campo immagine deve avere un minimo di :min caratteri!',
+        ])->validate();
+
+        return $validator;
+    } */
 }
