@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Comic;
 /* use Illuminate\Support\Facades\Validator; */
 use App\Http\Requests\StoreComicRequest;
+use App\Http\Requests\UpdateComicRequest;
 
 class ComicController extends Controller
 {
@@ -89,11 +90,11 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comic)
+    public function update(UpdateComicRequest $request, Comic $comic)
     {
         /* $comic = Comic::find($id); */
 
-        $form_data = $request->all();
+        $form_data = $request->validated();
 
         /* $comic->thumb = $form_data["thumb"];
         $comic->price = $form_data["price"];

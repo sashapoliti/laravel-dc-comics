@@ -73,12 +73,22 @@
                                                         <div class="mb-3">
                                                             <label for="series" class="form-label">Title</label>
                                                             <input type="text" class="form-control" id="series"
-                                                                name="series" value="{{ $comic->series }}" required>
+                                                                name="series" value="{{ $comic->series }}">
+                                                            @error('series')
+                                                                <div class="alert alert-danger">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="thumb" class="form-label">Image</label>
                                                             <input type="text" class="form-control" id="thumb"
-                                                                name="thumb" value="{{ $comic->thumb }}" required>
+                                                                name="thumb" value="{{ $comic->thumb }}">
+                                                            @error('thumb')
+                                                                <div class="alert alert-danger">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="type" class="form-label">Type</label>
@@ -95,7 +105,12 @@
                                                         <div class="mb-3">
                                                             <label for="price" class="form-label">Price</label>
                                                             <input type="text" class="form-control" id="price"
-                                                                name="price" value="{{ $comic->price }}" required>
+                                                                name="price" value="{{ $comic->price }}">
+                                                            @error('price')
+                                                                <div class="alert alert-danger">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
                                                         </div>
                                                         <div class="text-center">
                                                             <button type="submit" class="text-uppercase">Edit</button>
@@ -148,8 +163,8 @@
             </div>
 
             {{-- OFFCANVAS CREATE --}}
-            <div class="offcanvas offcanvas-start @if ($errors->any()) show @endif" tabindex="-1" id="offcanvasExample"
-                aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas offcanvas-start @if ($errors->any()) show @endif" tabindex="-1"
+                id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasExampleLabel">Add new Comic</h5>
                     <a type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></a>
@@ -160,7 +175,8 @@
                         <div class="mb-3">
                             <label for="series" class="form-label">Title</label>
                             <input type="text" class="form-control @error('series') is-invalid @enderror"
-                                id="series" name="series" value="{{ old('series') }}" required maxlength="100" minlength="3">
+                                id="series" name="series" value="{{ old('series') }}" required maxlength="100"
+                                minlength="3">
                             @error('series')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -170,7 +186,8 @@
                         <div class="mb-3">
                             <label for="thumb" class="form-label">Image</label>
                             <input type="text" class="form-control @error('thumb') is-invalid @enderror"
-                                id="thumb" name="thumb" value="{{ old('thumb') }}" required maxlength="255" minlength="3">
+                                id="thumb" name="thumb" value="{{ old('thumb') }}" required maxlength="255"
+                                minlength="3">
                             @error('thumb')
                                 <div class="alert alert-danger">
                                     {{ $message }}
@@ -187,7 +204,8 @@
                         <div class="mb-3">
                             <label for="price" class="form-label">Price</label>
                             <input type="text" class="form-control @error('price') is-invalid @enderror"
-                                id="price" name="price" value="{{ old('price') }}" required maxlength="20" minlength="3">
+                                id="price" name="price" value="{{ old('price') }}" required maxlength="20"
+                                minlength="3">
                             @error('price')
                                 <div class="alert alert-danger">
                                     {{ $message }}
