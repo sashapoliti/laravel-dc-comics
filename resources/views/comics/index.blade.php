@@ -71,7 +71,8 @@
                                                         <div class="mb-3">
                                                             <label for="series" class="form-label">Title</label>
                                                             <input type="text" class="form-control" id="series"
-                                                                name="series" value="{{ $comic->series }}">
+                                                                name="series" value="{{ $comic->series }}" required maxlength="100"
+                                                                minlength="3">
                                                             @error('series')
                                                                 <div class="alert alert-danger">
                                                                     {{ $message }}
@@ -81,7 +82,8 @@
                                                         <div class="mb-3">
                                                             <label for="thumb" class="form-label">Image</label>
                                                             <input type="text" class="form-control" id="thumb"
-                                                                name="thumb" value="{{ $comic->thumb }}">
+                                                                name="thumb" value="{{ $comic->thumb }}" required maxlength="255"
+                                                                minlength="3">
                                                             @error('thumb')
                                                                 <div class="alert alert-danger">
                                                                     {{ $message }}
@@ -103,7 +105,8 @@
                                                         <div class="mb-3">
                                                             <label for="price" class="form-label">Price</label>
                                                             <input type="text" class="form-control" id="price"
-                                                                name="price" value="{{ $comic->price }}">
+                                                                name="price" value="{{ $comic->price }}" required maxlength="20"
+                                                                minlength="3">
                                                             @error('price')
                                                                 <div class="alert alert-danger">
                                                                     {{ $message }}
